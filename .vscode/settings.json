@@ -1,0 +1,16 @@
+{
+    "rust-analyzer.linkedProjects": [
+        "books/the-rust-programming-language/hello_cargo/Cargo.toml",
+        "books/the-rust-programming-language/variables/Cargo.toml",
+        "books/the-rust-programming-language/functions/Cargo.toml",
+        "books/the-rust-programming-language/no_type_annotations/Cargo.toml",
+        "books/the-rust-programming-language/branches/Cargo.toml",
+        "books/the-rust-programming-language/loops/Cargo.toml",
+        "books/the-rust-programming-language/temperatures/Cargo.toml",
+        "books/the-rust-programming-language/fibonacci/Cargo.toml",
+        "books/the-rust-programming-language/guessing_game/Cargo.toml",
+        "books/the-rust-programming-language/variable_scope/Cargo.toml",
+        "books/the-rust-programming-language/string_type/Cargo.toml",
+        "books/the-rust-programming-language/ownership/Cargo.toml",
+    ]
+}
