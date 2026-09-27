@@ -12,5 +12,6 @@
         "books/the-rust-programming-language/variable_scope/Cargo.toml",
         "books/the-rust-programming-language/string_type/Cargo.toml",
         "books/the-rust-programming-language/ownership/Cargo.toml",
+        "exercises/slices/Cargo.toml",
     ]
 }
