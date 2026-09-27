@@ -89,13 +89,108 @@
 //     some_string.push_str(", world!");
 // }
 
-fn main() {
-    let mut s1 = String::from("hello");
-    change(&mut s1);
+// fn main() {
+//     let mut s1 = String::from("hello");
+//     change(&mut s1);
 
-    println!("{s1}");
+//     println!("{s1}");
+// }
+
+// fn change(some_string: &mut String) {
+//    some_string.push_str(", world!"); 
+// }
+
+// fn main() {
+//     let mut s = String::from("hello");
+
+//     let r1 = &s;
+//     let r2 = &s;
+
+//     println!("{r1} and {r2}");
+
+//     let r3 = &mut s;
+//     println!("{r3}");
+// }
+
+// fn main() {
+//     let reference_to_nothing = dangle();
+// }
+
+// fn dangle() -> &String {
+//     let s = String::from("hello");
+
+//     &s
+// }
+
+// fn main() {
+//     let mut s = String::from("hello world");
+
+//     let word = first_word(&s);
+
+//     s.clear();
+// }
+
+// fn first_word(s: &String) -> usize {
+//     let bytes = s.as_bytes();
+//     for (i, &c) in bytes.iter().enumerate() {
+//         if c == b' ' {
+//             return i;
+//         }
+//     }
+
+//     s.len()
+// }
+
+// fn main() {
+//     let mut s = String::from("hello world");
+
+//     let word = first_word(&s);
+
+//     s.clear();
+
+//     println!("The first word is: {word}");
+// }
+
+// fn first_word(s: &String) -> &str {
+//     let bytes = s.as_bytes();
+
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return &s[..i];
+//         }
+//     }
+
+//     &s[..]
+// }
+
+fn main() {
+    let s = String::from("hello world");
+
+    let word = first_word(&s);
+
+    println!("The first word is: {word}");
 }
 
-fn change(some_string: &mut String) {
-   some_string.push_str(", world!"); 
+// fn first_word(s: &String) -> &str {
+//     let bytes = s.as_bytes();
+
+//     for (i, &item) in bytes.iter().enumerate() {
+//         if item == b' ' {
+//             return &s[..i];
+//         }
+//     }
+
+//     &s[..]
+// }
+
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..i];
+        }
+    }
+
+    &s[..]
 }
