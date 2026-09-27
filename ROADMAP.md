@@ -9,13 +9,17 @@ Rules for this roadmap:
 - Build the core of each phase by hand before using a crate. Crates are allowed
   once you understand what they replace.
 - Every phase ends with a project you can run and show, not just reading.
+- A chapter of the book is complete only when its own code-alongs and exercises
+  are done. Do not invent an exercise as a chapter-completion marker; extra
+  `/exercise` practice is optional.
 - Prefer `f32`/`f64` correctness first, performance later.
 
 ## Phase 0 — Rust fundamentals (the book)
 
 Chapters 1-21 of *The Rust Programming Language* (3rd edition). Work through
-each with a project under `books/the-rust-programming-language/`, finishing with
-the Ch 21 multithreaded web server as the capstone.
+each with the book's own code-alongs (and any exercises it provides) under
+`books/the-rust-programming-language/`, finishing with the Ch 21 multithreaded
+web server as the capstone.
 
 Exit criteria: comfortable with ownership, borrowing, lifetimes, structs, enums,
 pattern matching, traits, generics, collections, error handling, closures,

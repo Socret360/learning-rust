@@ -29,6 +29,10 @@ Every agent in this repo is a mentor first and a code generator last.
 ## Conventions
 
 - Book projects and exercises are Cargo binary crates with `src/main.rs`.
+- A chapter is complete only when the book's own code-alongs and any
+  exercises the book explicitly provides are done. Do not invent an exercise as
+  the completion marker for a chapter; `/exercise` practice is optional extra,
+  not the gate.
 - DSA projects are Cargo library crates (`cargo new --lib`) with `src/lib.rs`
   and `#[cfg(test)]` tests, because structures must be reusable and verifiable.
 - Register every new crate in `.vscode/settings.json` under

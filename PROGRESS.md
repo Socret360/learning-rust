@@ -1,13 +1,13 @@
 # Progress
 
-Last updated: 2026-09-26
+Last updated: 2026-09-27
 Book: *The Rust Programming Language*, 3rd edition (Rust 1.90+, edition 2024).
 
 ## Current position
 
-- Reading: **Ch 4 — Understanding Ownership**.
-- Code-along projects through Ch 4 are in progress: ownership and references are
-  done, the slice type is not built yet.
+- Reading: **Ch 5 — Using Structs to Structure Related Data** (Ch 4 complete).
+- Ch 4 code-alongs are done: ownership, references, and slices (`first_word` in
+  `ownership`), plus `string_type` and `variable_scope`.
 - DSA: not started; ready for Tier 1.
 
 ## Book checklist
@@ -26,11 +26,11 @@ in parentheses.
   - [x] Functions (`functions`)
   - [x] Comments
   - [x] Control Flow (`branches`, `loops`, `temperatures`, `fibonacci`)
-- [ ] Ch 4 — Understanding Ownership (`ownership`, `string_type`,
-      `variable_scope`)  ← reading now
+- [x] Ch 4 — Understanding Ownership (`ownership`, `string_type`,
+      `variable_scope`)
   - [x] What is Ownership?
   - [x] References and Borrowing
-  - [ ] The Slice Type
+  - [x] The Slice Type
 - [ ] Ch 5 — Using Structs to Structure Related Data
   - [ ] Defining and Instantiating Structs
   - [ ] An Example Program Using Structs
@@ -145,9 +145,9 @@ in parentheses.
 
 ## Next steps
 
-1. Finish Ch 4 by building a `slices` project.
-2. Continue to Ch 5 (structs): build a `structs` project.
-3. Start DSA Tier 1 with `/dsa dynamic array` — a growable array with amortized
+1. Continue to Ch 5 (structs): build a `structs` project for the chapter's
+   code-alongs.
+2. Start DSA Tier 1 with `/dsa dynamic array` — a growable array with amortized
    O(1) push, built from scratch.
-4. Start Phase 1 of `ROADMAP.md` (idiomatic Rust and tooling) once the book
+3. Start Phase 1 of `ROADMAP.md` (idiomatic Rust and tooling) once the book
    reaches Chapter 10.
