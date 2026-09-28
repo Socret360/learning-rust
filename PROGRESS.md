@@ -1,11 +1,16 @@
 # Progress
 
-Last updated: 2026-09-27
+Last updated: 2026-09-28
 Book: *The Rust Programming Language*, 3rd edition (Rust 1.90+, edition 2024).
 
 ## Current position
 
-- Reading: **Ch 5 — Using Structs to Structure Related Data** (Ch 4 complete).
+- Reading: **Ch 6 — Enums and Pattern Matching** (Ch 5 complete).
+- Ch 5 code-alongs are done: `structs` (definition, instantiation, field
+  shorthand, struct update syntax, tuple structs) and `rectangles`
+  (`&Rectangle` + `#[derive(Debug)]` + `dbg!`, then `impl`, `&self`,
+  `can_hold`, `Rectangle::square`). Both crates build.
+- Note: `structs/` and `rectangles/` are **untracked** — not yet committed.
 - Ch 4 code-alongs are done: ownership, references, and slices (`first_word` in
   `ownership`), plus `string_type` and `variable_scope`.
 - DSA: not started; ready for Tier 1.
@@ -31,10 +36,10 @@ in parentheses.
   - [x] What is Ownership?
   - [x] References and Borrowing
   - [x] The Slice Type
-- [ ] Ch 5 — Using Structs to Structure Related Data
-  - [ ] Defining and Instantiating Structs
-  - [ ] An Example Program Using Structs
-  - [ ] Methods
+- [x] Ch 5 — Using Structs to Structure Related Data (`structs`, `rectangles`)
+  - [x] Defining and Instantiating Structs
+  - [x] An Example Program Using Structs
+  - [x] Methods
 - [ ] Ch 6 — Enums and Pattern Matching
   - [ ] Defining an Enum
   - [ ] The `match` Control Flow Construct
@@ -141,13 +146,24 @@ in parentheses.
 ## Concepts to review
 
 - Borrowing rules and mutable references (`&mut` exclusivity).
+- Move vs borrow: `println!` borrows its arguments, so "borrow of moved value"
+  (`E0382`) really means the move already happened.
+- Partial moves via struct update syntax (`..user1` moves only the fields not
+  spelled out and not `Copy`); the source is then unusable as a whole but
+  surviving fields still work.
+- `Copy` is opt-in (`#[derive(Copy, Clone)]`), not a property of "primitive":
+  `Point(i32, i32, i32)` moves unless derived. Design rule: small plain-data
+  types get `Copy`; buffer-owning types (`Frame`, `Image`, `Matrix`) must not.
 - Lifetimes (not yet covered; will matter for image buffers later).
 
 ## Next steps
 
-1. Continue to Ch 5 (structs): build a `structs` project for the chapter's
-   code-alongs.
-2. Start DSA Tier 1 with `/dsa dynamic array` — a growable array with amortized
+1. Commit the Ch 5 projects (`structs`, `rectangles`) and the
+   `settings.json` registration as `rpb: ch5: structs and methods`.
+2. Ch 6 (enums and pattern matching): build an `enums` project for the
+   code-alongs — `Option`, `match`, `if let` / `let...else` — laying the
+   groundwork for `Shape`/`Error`/`Frame` dispatch types.
+3. Start DSA Tier 1 with `/dsa dynamic array` — a growable array with amortized
    O(1) push, built from scratch.
-3. Start Phase 1 of `ROADMAP.md` (idiomatic Rust and tooling) once the book
+4. Start Phase 1 of `ROADMAP.md` (idiomatic Rust and tooling) once the book
    reaches Chapter 10.
