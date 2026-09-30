@@ -1,16 +1,20 @@
 # Progress
 
-Last updated: 2026-09-28
+Last updated: 2026-09-30
 Book: *The Rust Programming Language*, 3rd edition (Rust 1.90+, edition 2024).
 
 ## Current position
 
-- Reading: **Ch 6 — Enums and Pattern Matching** (Ch 5 complete).
+- Reading: **Ch 7 — Packages, Crates, and Modules** (Ch 6 complete).
+- Ch 6 code-alongs are done in `enums`: unit/tuple/struct-like variants
+  (`IpAddr`, `Message`, `Coin`), `Option`, `match` with payload binding and
+  catch-all arms, `if let`, and `let...else`. Builds and runs.
+- Note: `enums/` and its `settings.json` registration are **uncommitted**.
 - Ch 5 code-alongs are done: `structs` (definition, instantiation, field
   shorthand, struct update syntax, tuple structs) and `rectangles`
   (`&Rectangle` + `#[derive(Debug)]` + `dbg!`, then `impl`, `&self`,
-  `can_hold`, `Rectangle::square`). Both crates build.
-- Note: `structs/` and `rectangles/` are **untracked** — not yet committed.
+  `can_hold`, `Rectangle::square`). Committed in `rpb: ch5: structs and
+  methods`.
 - Ch 4 code-alongs are done: ownership, references, and slices (`first_word` in
   `ownership`), plus `string_type` and `variable_scope`.
 - DSA: not started; ready for Tier 1.
@@ -40,10 +44,10 @@ in parentheses.
   - [x] Defining and Instantiating Structs
   - [x] An Example Program Using Structs
   - [x] Methods
-- [ ] Ch 6 — Enums and Pattern Matching
-  - [ ] Defining an Enum
-  - [ ] The `match` Control Flow Construct
-  - [ ] Concise Control Flow with `if let` and `let...else`
+- [x] Ch 6 — Enums and Pattern Matching (`enums`)
+  - [x] Defining an Enum
+  - [x] The `match` Control Flow Construct
+  - [x] Concise Control Flow with `if let` and `let...else`
 - [ ] Ch 7 — Packages, Crates, and Modules
   - [ ] Packages and Crates
   - [ ] Control Scope and Privacy with Modules
@@ -154,16 +158,23 @@ in parentheses.
 - `Copy` is opt-in (`#[derive(Copy, Clone)]`), not a property of "primitive":
   `Point(i32, i32, i32)` moves unless derived. Design rule: small plain-data
   types get `Copy`; buffer-owning types (`Frame`, `Image`, `Matrix`) must not.
+- `let...else`: the `else` block must diverge (type `!`, the never type) via
+  `return`, `break`, `continue`, or `panic!`; the binding outlives the
+  statement, so control must never continue past a failed match.
+- `match` exhaustiveness is checked by the compiler, but it cannot detect two
+  arms that return an identical value — a logic bug found by hand in
+  `describe_state_quarter`.
+- Refutable vs. irrefutable patterns (introduced in Ch 6; deepened in Ch 19).
 - Lifetimes (not yet covered; will matter for image buffers later).
 
 ## Next steps
 
-1. Commit the Ch 5 projects (`structs`, `rectangles`) and the
-   `settings.json` registration as `rpb: ch5: structs and methods`.
-2. Ch 6 (enums and pattern matching): build an `enums` project for the
-   code-alongs — `Option`, `match`, `if let` / `let...else` — laying the
-   groundwork for `Shape`/`Error`/`Frame` dispatch types.
-3. Start DSA Tier 1 with `/dsa dynamic array` — a growable array with amortized
-   O(1) push, built from scratch.
+1. Commit `enums` and the `settings.json` registration as `rpb: ch6: enums and
+   pattern matching`.
+2. Start DSA Tier 1 with `/dsa dynamic array` — a growable array with amortized
+   O(1) push and from-scratch growth/reallocation, stating complexity before
+   coding.
+3. Ch 7 (packages, crates, modules) before Ch 8, since collections there live
+   behind module paths.
 4. Start Phase 1 of `ROADMAP.md` (idiomatic Rust and tooling) once the book
    reaches Chapter 10.
