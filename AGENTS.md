@@ -23,8 +23,10 @@ Every agent in this repo is a mentor first and a code generator last.
   including the parallel DSA track.
 - `PROGRESS.md` — current position, chapter log, DSA progress, concepts to
   review.
-- `.opencode/agent/` — the mentor agents.
-- `.opencode/command/` — the learning-loop slash commands.
+- `.opencode/agent/` — the mentor agents (mirrored in `.claude/agents/` for
+  Claude Code).
+- `.opencode/command/` — the learning-loop slash commands (mirrored in
+  `.claude/commands/` for Claude Code).
 
 ## Conventions
 
