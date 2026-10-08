@@ -1,15 +1,20 @@
 # Progress
 
-Last updated: 2026-09-30
+Last updated: 2026-10-08
 Book: *The Rust Programming Language*, 3rd edition (Rust 1.90+, edition 2024).
 
 ## Current position
 
-- Reading: **Ch 7 — Packages, Crates, and Modules** (Ch 6 complete).
-- Ch 6 code-alongs are done in `enums`: unit/tuple/struct-like variants
-  (`IpAddr`, `Message`, `Coin`), `Option`, `match` with payload binding and
-  catch-all arms, `if let`, and `let...else`. Builds and runs.
-- Note: `enums/` and its `settings.json` registration are **uncommitted**.
+- Reading: **Ch 8 — Common Collections** (Ch 7 complete).
+- Ch 7 code-alongs are done in `restaurant` (library crate + binary in one
+  package; `mod` tree, `pub` on structs vs enums, `crate::`/`super::` paths,
+  `use`, and `front_of_house` split into `front_of_house.rs` +
+  `front_of_house/hosting.rs`) and `backyard` (`garden/vegetables.rs`,
+  `use crate::garden::vegetables::Asparagus`). Both build.
+- Note: `backyard/`, `restaurant/` and their `settings.json` registrations are
+  **uncommitted**.
+- Ch 6 code-alongs are done in `enums` (variants, `Option`, `match`,
+  `if let`, `let...else`). Committed in `rpb: ch6: enums and pattern matching`.
 - Ch 5 code-alongs are done: `structs` (definition, instantiation, field
   shorthand, struct update syntax, tuple structs) and `rectangles`
   (`&Rectangle` + `#[derive(Debug)]` + `dbg!`, then `impl`, `&self`,
@@ -48,12 +53,12 @@ in parentheses.
   - [x] Defining an Enum
   - [x] The `match` Control Flow Construct
   - [x] Concise Control Flow with `if let` and `let...else`
-- [ ] Ch 7 — Packages, Crates, and Modules
-  - [ ] Packages and Crates
-  - [ ] Control Scope and Privacy with Modules
-  - [ ] Paths for Referring to an Item in the Module Tree
-  - [ ] Bringing Paths Into Scope with the `use` Keyword
-  - [ ] Separating Modules into Different Files
+- [x] Ch 7 — Packages, Crates, and Modules (`restaurant`, `backyard`)
+  - [x] Packages and Crates
+  - [x] Control Scope and Privacy with Modules
+  - [x] Paths for Referring to an Item in the Module Tree
+  - [x] Bringing Paths Into Scope with the `use` Keyword
+  - [x] Separating Modules into Different Files
 - [ ] Ch 8 — Common Collections
   - [ ] Storing Lists of Values with Vectors
   - [ ] Storing UTF-8 Encoded Text with Strings
@@ -164,17 +169,31 @@ in parentheses.
 - `match` exhaustiveness is checked by the compiler, but it cannot detect two
   arms that return an identical value — a logic bug found by hand in
   `describe_state_quarter`.
+- Privacy is per-item and defaults to private: a `pub struct` still has
+  private fields (so `Breakfast` needs a `summer` constructor), but a `pub
+  enum` makes every variant public. Design rule for CV: `Image` exposes
+  `width()`/`height()` and keeps its pixel `Vec` private so the
+  `len == w * h * channels` invariant can't be broken from outside.
+- `use` idioms not exercised in code yet: `pub use` re-exports, `as`
+  renaming, nested paths (`use std::{cmp, io}`), and glob `*`. Re-exports are
+  how a future `vision` crate would present a flat public API over a deep
+  module tree.
+- `mod foo;` *declares* a module once (in the parent); `use` only creates a
+  shortcut. Declaring the same file twice is a common mistake.
 - Refutable vs. irrefutable patterns (introduced in Ch 6; deepened in Ch 19).
 - Lifetimes (not yet covered; will matter for image buffers later).
 
 ## Next steps
 
-1. Commit `enums` and the `settings.json` registration as `rpb: ch6: enums and
-   pattern matching`.
-2. Start DSA Tier 1 with `/dsa dynamic array` — a growable array with amortized
-   O(1) push and from-scratch growth/reallocation, stating complexity before
-   coding.
-3. Ch 7 (packages, crates, modules) before Ch 8, since collections there live
-   behind module paths.
+1. Commit `restaurant`, `backyard` and the `settings.json` registrations as
+   `rpb: ch7: packages, crates, and modules`.
+2. **DSA Tier 1 is overdue** (planned since Ch 6, still not started): run
+   `/dsa dynamic array` and build `dsa/dynamic_array`, a growable array with
+   amortized O(1) push. State the complexity before coding. Do this *before*
+   Ch 8.1 so you have built a `Vec` before you use one. It also exercises the
+   Ch 7 privacy rules (private `len`/`cap`, public methods).
+3. Ch 8 — Common Collections. After 8.1, add a tiny goal-aligned project: a
+   grayscale `Image { width, height, pixels: Vec<u8> }` in its own module with
+   a private buffer and a `histogram() -> [u32; 256]`.
 4. Start Phase 1 of `ROADMAP.md` (idiomatic Rust and tooling) once the book
    reaches Chapter 10.
