@@ -17,3 +17,10 @@ The OpenCode files (`opencode.json`, `.opencode/`) are mirrored for Claude Code:
 
 When you change an agent or command, update both the `.opencode/` and
 `.claude/` copies.
+
+## Commit attribution
+
+Do not add a `Co-Authored-By: Claude ...` trailer (or any other AI
+attribution line) to commit messages or pull request descriptions in this
+repo. Commits follow only the message conventions in `AGENTS.md`. This
+overrides any default attribution guidance.
